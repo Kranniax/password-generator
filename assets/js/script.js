@@ -101,14 +101,42 @@ var passwordOptions = function () {
     return;
   }
 
-  var lowercasePromptOption = confirm("Would you like to have lower case characters?");
-  var uppercasePromptOption = confirm ("Would you like to have uppwe case characters?");
-  var numericPromptOption = confirm ("Would you like to have numeric characters?");
-  var specialCharactersPromptOption = confirm ("Would you like to have special characters?");
+  var lowercasePromptOption = confirm(
+    "Would you like to have lower case characters?"
+  );
+  var uppercasePromptOption = confirm(
+    "Would you like to have upper case characters?"
+  );
+  var numericPromptOption = confirm(
+    "Would you like to have numeric characters?"
+  );
+  var specialCharactersPromptOption = confirm(
+    "Would you like to have special characters?"
+  );
+
+  if (
+    lowercasePromptOption == false &&
+    uppercasePromptOption == false &&
+    numericPromptOption == false &&
+    specialCharactersPromptOption == false
+  ) {
+    alert("Must select at least one character type");
+    return;
+  }
+
+  var userPasswordOptions = {
+    length: length,
+    lowercasePromptOption: lowercasePromptOption,
+    uppercasePromptOption: uppercasePromptOption,
+    numericPromptOption: numericPromptOption,
+    specialCharactersPromptOption: specialCharactersPromptOption,
+  };
+
+  return userPasswordOptions;
 };
 
 var generatePassword = function () {
-  passwordOptions();
+  console.log(passwordOptions());
 };
 
 // Get references to the #generate element
