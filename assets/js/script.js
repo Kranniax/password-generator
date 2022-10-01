@@ -91,6 +91,27 @@ var randomCharacter = function (characterArray) {
 
   return randomCharacter;
 };
+
+// A utility function to shuffle the array.
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
 // Password Criteria Prompts
 var passwordOptions = function () {
   var length = parseInt(
@@ -101,17 +122,17 @@ var passwordOptions = function () {
   // Check password length for numeric value.
   if (isNaN(length) === true) {
     alert("Password length must be provided as a number");
-    return;
+    return passwordOptions();
   }
   // Check password length for being at least 8 characters.
   if (length < 8) {
     alert("Password length must be at least 8 characters in length.");
-    return;
+    return passwordOptions();
   }
   // Check password length for no more than 128 characters.
   if (length > 128) {
     alert("Password length must have a maximum length of 128 characters");
-    return;
+    return passwordOptions();
   }
 
   var lowercasePromptOption = confirm(
@@ -175,12 +196,25 @@ var generatePassword = function () {
     selectedCriterias.push(randomCharacter(specialCharacters));
   }
 
-  // Loop through the possible Criterias array to construct a new result array.
+  // Loop through the possible criterias array to construct a new result array.
   for (var i = 0; i < passwordCriterias.length; i++) {
-    result = result.push(randomCharacter(possibleCriterias));
+    var possibleCharacter = randomCharacter(possibleCriterias);
+    result.push(possibleCharacter);
   }
 
-  console.log(result);
+  // Make sure that the selected criterias have been added at least.
+  for (var i = 0; i < selectedCriterias.length; i++) {
+    result[i] = selectedCriterias[i];
+  }
+
+  // Shuffle the resulting array for some randomness.
+  var finalResult = shuffle(result);
+
+  //Combine result into a string.
+  var resultString = finalResult.join(" ");
+
+  // Return combined string.
+  return resultString;
 };
 
 // Write password to the #password input
