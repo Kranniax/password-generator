@@ -1,3 +1,6 @@
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
 // Assignment code here
 var lowerCaseLetters = [
   "a",
@@ -82,20 +85,25 @@ var specialCharacters = [
   ".",
 ];
 
+var combinedArray = [];
+// Password Criteria Prompts
 var passwordOptions = function () {
   var length = parseInt(
-    prompt("How many characters would you like your password to contain?")
+    prompt(
+      "How many characters would you like your password to contain?  [ Must be between 8 - 128 ]"
+    )
   );
   // Check password length for numeric value.
   if (isNaN(length) === true) {
     alert("Password length must be provided as a number");
     return;
   }
-  // Check password length for being at least 8 characters and no more than 128 characters.
+  // Check password length for being at least 8 characters.
   if (length < 8) {
     alert("Password length must be at least 8 characters in length.");
     return;
   }
+  // Check password length for no more than 128 characters.
   if (length > 128) {
     alert("Password length must have a maximum length of 128 characters");
     return;
@@ -135,12 +143,25 @@ var passwordOptions = function () {
   return userPasswordOptions;
 };
 
+// Generate a password based on user password criteria.
 var generatePassword = function () {
-  console.log(passwordOptions());
-};
+  var passwordCriterias = passwordOptions();
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+  for (var i = 0; i < passwordCriterias.length; i++) {
+    if (passwordCriterias.lowercasePromptOption === true){
+      combinedArray.push();
+    }
+    if(passwordCriterias.uppercasePromptOption === true ){
+
+    }
+    if (passwordCriterias.numericPromptOption === true ){
+
+    }
+    if (passwordCriterias.specialCharactersPromptOption === true){
+
+    }
+  }
+};
 
 // Write password to the #password input
 function writePassword() {
