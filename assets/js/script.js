@@ -85,7 +85,12 @@ var specialCharacters = [
   ".",
 ];
 
-var combinedArray = [];
+var randomCharacter = function (characterArray) {
+  var randomIndex = Math.floor(Math.random() * characterArray.length);
+  var randomCharacter = characterArray[randomIndex];
+
+  return randomCharacter;
+};
 // Password Criteria Prompts
 var passwordOptions = function () {
   var length = parseInt(
@@ -146,21 +151,36 @@ var passwordOptions = function () {
 // Generate a password based on user password criteria.
 var generatePassword = function () {
   var passwordCriterias = passwordOptions();
+  var result = [];
+  var possibleCriterias = [];
+  var selectedCriterias = [];
 
-  for (var i = 0; i < passwordCriterias.length; i++) {
-    if (passwordCriterias.lowercasePromptOption === true){
-      combinedArray.push();
-    }
-    if(passwordCriterias.uppercasePromptOption === true ){
+  // Using the inputted password criterias, combine them into an array.
+  // Check object properties for selected character types.
 
-    }
-    if (passwordCriterias.numericPromptOption === true ){
-
-    }
-    if (passwordCriterias.specialCharactersPromptOption === true){
-
-    }
+  if (passwordCriterias.lowercasePromptOption) {
+    possibleCriterias = possibleCriterias.concat(lowerCaseLetters);
+    selectedCriterias.push(randomCharacter(lowerCaseLetters));
   }
+  if (passwordCriterias.uppercasePromptOption) {
+    possibleCriterias = possibleCriterias.concat(upperCaseLetters);
+    selectedCriterias.push(randomCharacter(upperCaseLetters));
+  }
+  if (passwordCriterias.numericPromptOption) {
+    possibleCriterias = possibleCriterias.concat(numericCharacters);
+    selectedCriterias.push(randomCharacter(numericCharacters));
+  }
+  if (passwordCriterias.specialCharactersPromptOption) {
+    possibleCriterias = possibleCriterias.concat(specialCharacters);
+    selectedCriterias.push(randomCharacter(specialCharacters));
+  }
+
+  // Loop through the possible Criterias array to construct a new result array.
+  for (var i = 0; i < passwordCriterias.length; i++) {
+    result = result.push(randomCharacter(possibleCriterias));
+  }
+
+  console.log(result);
 };
 
 // Write password to the #password input
