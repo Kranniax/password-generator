@@ -1,11 +1,11 @@
-# Password Generator Starter Code
+# Password Generator
 
 ## Description
 
 An application that an employee can use to generate a random password based on the criteria selected.
 This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript Code.
 
-![Alt text](/assets/images/kranniax-github-io-1920x1080desktop-90d38e.png)
+![Alt text](/assets/images/kranniax-github-io-1920x1080desktop-7b0474.png)
 
 ## Technologies Used
 
@@ -14,7 +14,7 @@ This app will run in the browser and will feature dynamically updated HTML and C
 
 ## Deployed Website
 
-<https://kranniax.github.io/shane-portfolio/>
+<https://kranniax.github.io/password-generator/>
 
 ## Contributions
 
